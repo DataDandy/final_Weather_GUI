@@ -25,7 +25,8 @@ class Controller(QMainWindow, Ui_MainWindow):
 
     def search(self):
         """Function to create the search processes for the GUI. User will enter city and country and the system will
-        output the weather along with an image of the weather's icon from a JSON file.
+        output the weather along with an image of the weather's icon from a JSON file. The JSON does not allow for
+        entering a state, but the output is very accurate for searched cities.
                 """
         api_start = 'https://api.openweathermap.org/data/2.5/weather?q='
         api_key = '&appid=089d638e7bcd08656a35fd6ae8eaa004'
@@ -45,7 +46,9 @@ class Controller(QMainWindow, Ui_MainWindow):
             qpixmap = QPixmap()
             qpixmap.loadFromData(image_data)
 
-            self.labelOutput.setText(f"The Weather Report for {city}, in {country}: \n\tCurrent Conditions: {weather_description}\n\tCurrent Temperature in Fahrenheit: {pytemperature.k2f(weather_temp):.0f}\n\tCurrent Humidity: {weather_humidity}%")
+            self.labelOutput.setText(f"The Weather Report for {city}, in {country}: \n\tCurrent Conditions: "
+                                     f"{weather_description}\n\tCurrent Temperature in Fahrenheit: "
+                                     f"{pytemperature.k2f(weather_temp):.0f}\n\tCurrent Humidity: {weather_humidity}%")
             self.labelImage.setPixmap(qpixmap)
 
         except:
@@ -54,7 +57,7 @@ class Controller(QMainWindow, Ui_MainWindow):
 
     def clear(self):
         """Function to clear the data the user entered and prepare it for new input.
-                """
+        """
         blank = self.inputCity.setText("")
         self.inputCountry.setText("")
         self.labelOutput.setText("")
