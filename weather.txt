@@ -1,0 +1,7 @@
+The Weather Report for omaha in us is:
+	Current Conditions: broken clouds
+	Current Temperature in Fahrenheit: 82.54
+	Current Pressure in hpa: 1013
+	Current Humidity: 50%
+
+
